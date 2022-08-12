@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "DojoHome";
+}
+@Styles.Render("~/Content/chat.css")
+
+
+<h2>DojoHome</h2>
+
+<button id="btnSamourai">Samourais</button>
+
+<button id="btnArme">Armes</button>
+
+<button id="btnAddSamourai">Ajouter Samourai</button>
+
+<button id="btnAddArme">Ajouter Arme</button>
+
+<div id="tableSamourais">
+
+    <div id="tableLstSamourais" class="hidden">
+        <h3 data-prop="Nom" data-src="text"></h3>
+        <ul>
+            <li>Force : <span data-prop="Force" data-src="text"></span></li>
+            <li>
+                Armes :
+                <span data-prop="Arme" data-src="model" class="hidden">
+                    <span data-prop="Nom" data-src="text"></span>
+                </span>
+            </li>
+        </ul>
+        <button name="" data-prop="Id" data-src="name" onclick="updateSamourai(this)">Modifier</button>
+        <button name="" data-prop="Id" data-src="name" onclick="showDetailsSamourai(this)">Details</button>
+        <button name="" data-prop="Id" data-src="name" onclick="deleteSamourai(this)">Supprimer</button>
+    </div>
+</div>
+
+<div id="divFormSamourai" class="hidden">
+
+    <form id="formSamourai">
+        <h3></h3>
+        <label for="nom">Nom :</label>
+        <input id="nom" name="nom" type="text" required /><br />
+
+        <label for="pate">Force : </label>
+        <input id="force" name="force" type="number" />
+        <br />
+
+        <label for="arme">Arme : </label>
+        <select name="arme" id="arme">
+            <option value="" class="hidden"></option>
+        </select>
+        <br />
+
+        <button id="cancelButton" type="reset" value="Reset">Annuler</button>
+    </form>
+    <button id="createButtonForm" name="0"></button>
+
+</div>
+
+<div>
+    <div id="detailsSamourai" class="hidden">
+        <h3 data-prop="Nom" data-src="text"></h3>
+        <ul>
+            <li>Force : <span data-prop="Force" data-src="text"></span></li>
+        </ul>
+        <div>
+            Armes :
+            <ul data-prop="Arme" data-src="model" class="hidden">
+                <li>Nom = <span data-prop="Nom" data-src="text"></span></li>
+                <li>Degats = <span data-prop="Degats" data-src="text"></span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div>
+
+    <table id="tableArmes" class="hidden">
+
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Degats</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="tableLstArmes" class="hidden">
+                <td data-prop="Nom" data-src="text"></td>
+                <td data-prop="Degats" data-src="text"></td>
+                <td><button name="" data-prop="Id" data-src="name" onclick="showDetailsArme(this)">Détails</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <div id="detailsArme" class="hidden">
+        <h3 data-prop="Nom" data-src="text"></h3>
+        <ul>
+            <li>Degats = <span data-prop="Degats" data-src="text"></span></li>
+        </ul>
+    </div>
+</div>
+
+@Scripts.Render("~/Scripts/dojo.js")
